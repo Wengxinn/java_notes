@@ -1,0 +1,44 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+import java.text.SimpleDateFormat;
+
+class Result {
+
+    /*
+     * Complete the 'timeConversion' function below.
+     *
+     * The function is expected to return a STRING.
+     * The function accepts STRING s as parameter.
+     */
+
+    public static String timeConversion(String s) {
+        // Write your code here
+        // 12-hour format
+        DateFormat formatter12 = new SimpleDateFormat("hh:mm:ssaa");
+        // 24-hour format (HH indicates 24-hr)
+        DateFormat formatter24 = new SimpleDateFormat("HH:mm:ss");
+        Date time12 = null;
+        String time24 = null;
+        
+        // Must declare ParseException
+        try{
+            // Convert the input from String to Date
+            time12 = formatter12.parse(s);
+            // Change to 24-hour format ad store as String
+            time24 = formatter24.format(time12);
+        }
+        catch(ParseException pe){
+            pe.printStackTrace();
+        }
+
+        return time24;
+    }
